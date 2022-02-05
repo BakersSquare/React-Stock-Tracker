@@ -1,0 +1,6 @@
+.scrollbar {
+  float: left;
+  height: 600px;
+  background: black;
+  overflow-y: scroll;
+  }
