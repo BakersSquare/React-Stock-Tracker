@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/React-Stock-Tracker/static/css/main.cf73f06f.css",
+    "main.js": "/React-Stock-Tracker/static/js/main.fc863eeb.js",
+    "index.html": "/React-Stock-Tracker/index.html",
+    "main.cf73f06f.css.map": "/React-Stock-Tracker/static/css/main.cf73f06f.css.map",
+    "main.fc863eeb.js.map": "/React-Stock-Tracker/static/js/main.fc863eeb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf73f06f.css",
+    "static/js/main.fc863eeb.js"
+  ]
+}
