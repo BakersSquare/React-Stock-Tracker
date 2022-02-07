@@ -24,22 +24,12 @@ function removeStock(e, stock){
 
 function showChart(e, stock){
   e.preventDefault();
-  console.log('THIS IS THE CHART OBJECT WE\'RE ACCESSING: ')
   console.log(stock)
   setActiveChart(stock)
 }
 
 useEffect(() => {
-  console.log(activeChart)
-  axios.get("https://finnhub.io/api/v1/stock/candle?symbol=" + activeChart.symbol + "&resolution=D&from=1631022248&to=1631627048&token=c7rp4gaad3iel5ubg0s0").then(res => {
-    activeChart.data = res.data
-
-    console.log('data was set');}
-  ).catch(e => console.log(e))
-}, [activeChart])
-
-useEffect(() => {
-  //for(let stock in myStocks){
+  //Gets price data for all the charts
     myStocks.map(stock => {
     axios.get('https://finnhub.io/api/v1/quote?symbol=' + stock.symbol + '&token=c7rp4gaad3iel5ubg0s0').then(res => {
       stock.curPrice = res.data.c;
@@ -49,9 +39,19 @@ useEffect(() => {
       stock.lowPriceOfDay = res.data.l;
       stock.openPriceOfDay = res.data.o;
       stock.previousClosePrices = res.data.pc;
+    }).catch(e => console.log(e))
+    
+    //Gets chart data for all the charts.
+    axios.get("https://finnhub.io/api/v1/stock/candle?symbol=" + stock.symbol + "&resolution=D&from=1631022248&to=1631627048&token=c7rp4gaad3iel5ubg0s0").then(res => {
+      stock.data = res.data;
+
+      //convert the time from unix to string
+      for(let i = 0; i < stock.data.t.length; i ++){
+        let temp = new Date(stock.data.t[i] * 1000)
+        stock.data.t[i] = temp.getMonth() + "/" + temp.getDate() + "/" + temp.getFullYear()
+      }
     }).catch(e => console.log(e));
-  }
-  )
+  })
 }, [myStocks]); // Only re-run if mystocks changes
 
 

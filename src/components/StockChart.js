@@ -16,13 +16,11 @@ ChartJS.register(
 
 
 function StockChart(props) {
-
-
       return (
         <>
             {(typeof props.chart.data !== 'undefined') && (typeof props.chart.data.c !== 'undefined') && (typeof props.chart.data.t !== 'undefined') ? (
             <div>
-                <div>{JSON.stringify(props.chart.description)}</div>
+                <div>{(props.chart.description)}</div>
                 <Line
                     datasetIdKey={props.chart.symbol}
                     data={{

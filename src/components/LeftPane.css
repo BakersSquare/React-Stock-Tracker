@@ -1,0 +1,7 @@
+.col-md{
+  white-space: nowrap;
+}
+
+.child-element{
+  display: inline-block;
+}

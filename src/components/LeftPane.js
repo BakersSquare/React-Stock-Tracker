@@ -31,24 +31,20 @@ function LeftPane (props) {
     }
 
       return (
-        <>
-        <div>
-          <div className="btn-group p-1" role="group" aria-label="Basic example">
+        <div className="col-md">
+          <div className="btn-group p-1 child-element" role="group" aria-label="Basic example">
             <button type="button" id="0" onClick={setList0} className="btn btn-secondary">My Stocks</button>
             <button type="button" id="1" onClick={setList1} className="btn btn-secondary">Recommended</button>
             <button type="button" id="2" onClick={setList2} className="btn btn-secondary">Search</button>
           </div>
           {showList === 0 &&
-          <StockList myStocks={props.myStocks} removeStock={props.removeStock} showChart={props.showChart}/>}
+          <StockList className="child-element" myStocks={props.myStocks} removeStock={props.removeStock} showChart={props.showChart}/>}
           {showList === 1 &&
-          <RecommendedList addStock={props.addStocks} recStocks={recommendedStocks}/>}
+          <RecommendedList className="child-element" addStock={props.addStocks} recStocks={recommendedStocks}/>}
           {showList === 2 &&
           <header>This feature is not yet supported!</header>}
         </div>
-        </>
       );
 }
 
 export default LeftPane;
-
-//Consider putting the button group INSIDE this pane. Then you can do an if/else statement to determine which list element to show. Create a component for each list element, and then render it depending on which button is selected. Can also create an 'isSelected' helper function in this class.
